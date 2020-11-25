@@ -118,9 +118,11 @@
    *
    */
   NProgress.start = function(text) {
-    $('#txt-nprogress').text('');
+    
     if (text) {
-      $('#txt-nprogress').text(text);
+      document.getElementById('txt-nprogress').innerHTML = text
+    } else {
+      document.getElementById('txt-nprogress').innerHTML = '';
     }
     if (!NProgress.status) NProgress.set(0);
 
@@ -150,7 +152,7 @@
    */
 
   NProgress.done = function(force) {
-    $('#txt-nprogress').text('');
+    document.getElementById('txt-nprogress').innerHTML = '';
     if (!force && !NProgress.status) return this;
 
     return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
