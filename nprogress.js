@@ -119,12 +119,13 @@
    */
   NProgress.start = function(text) {
     
+    if (!NProgress.status) NProgress.set(0);
+
     if (text) {
       document.getElementById('txt-nprogress').innerHTML = text
     } else {
       document.getElementById('txt-nprogress').innerHTML = '';
     }
-    if (!NProgress.status) NProgress.set(0);
 
     var work = function() {
       setTimeout(function() {
