@@ -118,7 +118,7 @@
    *
    */
   NProgress.start = function(text) {
-    
+    console.error(text);
     if (!NProgress.status) NProgress.set(0);
 
     if (text) {
