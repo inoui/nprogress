@@ -27,7 +27,7 @@
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+    template: '<div class="bar" role="bar"><div class="peg"></div></div><div id="txt-nprogress"></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
   };
 
   /**
@@ -117,7 +117,11 @@
    *     NProgress.start();
    *
    */
-  NProgress.start = function() {
+  NProgress.start = function(text) {
+    $('#txt-nprogress').text('');
+    if (text) {
+      $('#txt-nprogress').text(text);
+    }
     if (!NProgress.status) NProgress.set(0);
 
     var work = function() {
@@ -146,6 +150,7 @@
    */
 
   NProgress.done = function(force) {
+    $('#txt-nprogress').text('');
     if (!force && !NProgress.status) return this;
 
     return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
